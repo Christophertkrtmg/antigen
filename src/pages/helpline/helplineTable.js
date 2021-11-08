@@ -142,11 +142,11 @@ const className = {
     "flex bg-red-700 rounded-full  items-center justify-center  py-1",
   vaccinePending:
     "flex bg-gray-700 rounded-full  items-center justify-center  py-1",
-  vaccineStatus: "text-sm text-white text-sm ",
+  vaccineStatus: "text-sm text-white ",
   statusNormal:
-    "bg-green-500 rounded-full px-2 py-1 w-24 text-white  text-sm capitalize  font-semibold text-sm",
+    "bg-green-500 rounded-full px-2 py-1 w-24 text-white  text-sm capitalize  font-semibold",
   statusUnhealthy:
-    "bg-yellow-500 rounded-full px-2 py-1 w-24 text-white  text-sm capitalize  font-semibold text-sm",
+    "bg-yellow-500 rounded-full px-2 py-1 w-24 text-white  text-sm capitalize  font-semibold",
   statusDetected:
-    "bg-red-500 rounded-full px-2 py-1 w-24 text-white  text-sm capitalize  font-semibold text-sm",
+    "bg-red-500 rounded-full px-2 py-1 w-24 text-white  text-sm capitalize  font-semibold",
 };

@@ -14,6 +14,7 @@ import MovieCreationIcon from "@mui/icons-material/MovieCreation";
 import VerifiedUserIcon from "@mui/icons-material/VerifiedUser";
 import SettingsIcon from "@mui/icons-material/Settings";
 import QuestionAnswerIcon from "@mui/icons-material/QuestionAnswer";
+import PaymentIcon from "@mui/icons-material/Payment";
 
 function Sidebar({ sidebarOpen }) {
   const { logout } = useContext(AppContext);
@@ -37,6 +38,11 @@ function Sidebar({ sidebarOpen }) {
       title: "Blood Data",
       link: "/dashboard/bloodData",
       icon: <ImportContactsIcon />,
+    },
+    {
+      title: "Donation",
+      link: "/dashboard/donation",
+      icon: <PaymentIcon />,
     },
     {
       title: "Photos & Videos",

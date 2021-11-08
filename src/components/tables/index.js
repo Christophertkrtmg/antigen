@@ -2,10 +2,10 @@ import React from "react";
 
 function TableComponent({ thead, children }) {
   const className = {
-    table: "table w-full p-4 bg-white shadow-sm rounded-lg overflow-auto",
+    table: "table w-full p-1 bg-white shadow-sm rounded-lg overflow-auto",
     heading:
-      "px-5 py-4 text-gray-800 text-grey mb-2 shadow border-yellow-500 text-xs md:text-sm lg:text-sm capitalize font-semibold",
-    td: " p-4 dark:border-dark-5 text-center",
+      "px-2 py-1 text-gray-800 mb-1 shadow border-black text-xs md:text-sm lg:text-sm capitalize font-semibold",
+    td: "p-1 dark:border-dark-5 text-center",
   };
 
   return (

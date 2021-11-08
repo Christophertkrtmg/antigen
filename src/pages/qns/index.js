@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import { allQuestions } from "../../api";
-import CurrentStatus from "../../components/stats/CurrentStatus.js";
 import { AppContext } from "../../context/app.context.js";
 import Question from "./Question.js";
 import Survey from "./Survey";
+import MenuComponent from "../../components/menu/MenuComponent";
 
 function Qns() {
   const [questions, setQuestions] = useState([]);
@@ -43,15 +43,7 @@ function Qns() {
 
   return (
     <main className="mb-14">
-      <div className="flex flex-wrap mx-5 my-5 bg-white xl:mx-6">
-        {questionData.map((item, index) => {
-          return (
-            <div className="p-3" onClick={() => setChoose(item.name)}>
-              <CurrentStatus key={index} name={item.name} count={item.count} />
-            </div>
-          );
-        })}
-      </div>
+      <MenuComponent setChoose={setChoose} menuItem={questionData} />
       {choose === "question" ? (
         <Question allQuestions={questions} fetchQuestions={fetchQuestions} />
       ) : choose === "survey" ? (

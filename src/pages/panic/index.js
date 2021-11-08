@@ -1,18 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
-import {
-  FilterIcon,
-  SortAscIcon,
-  SortDescIcon,
-} from "../../assets/icons/icons.js";
-import PageHeading from "../../components/header/pageHeading.js";
 import TableComponent from "../../components/tables/index.js";
-import CurrentStatus from "../../components/stats/CurrentStatus.js";
 import PanicTable from "./PanicTable.js";
-import { allHelplines, allPanicsData } from "../../api";
+import { allPanicsData } from "../../api";
 import { AppContext } from "../../context/app.context.js";
+import MenuComponent from "../../components/menu/MenuComponent.js";
 
 function Panic() {
-  const [sort, setSort] = useState(false);
   const { token } = useContext(AppContext);
   const [panicData, setPanicData] = useState([]);
 
@@ -29,11 +22,10 @@ function Panic() {
   };
 
   const users = [
-    { name: "all", count: "600" },
-    { name: "panic users", count: "50" },
-    { name: "in progress", count: "43" },
+    { name: "all", count: "512" },
     { name: "pending", count: "64" },
-    { name: "helped", count: "500" },
+    { name: "in progress", count: "43" },
+    { name: "helped", count: "350" },
   ];
 
   useEffect(() => {
@@ -47,35 +39,188 @@ function Panic() {
     await fetchPanicData();
   }, []); */
 
+  const [choose, setChoose] = useState("");
+
+  const handleChoose = (getchoose) => {
+    switch (getchoose) {
+      case "pending":
+        let responsePending = tableData.filter(
+          (filterData) => filterData.response_status === "pending"
+        );
+        return responsePending.map((panicUser) => (
+          <PanicTable
+            id={panicUser.id}
+            key={panicUser.id}
+            name={panicUser.name}
+            location={panicUser.location}
+            coordinate_lat={panicUser.coordinate_lat}
+            coordinate_long={panicUser.coordinate_long}
+            phone={panicUser.phone}
+            response_status={panicUser.response_status}
+            status={panicUser.status}
+            panic_date={panicUser.panic_date}
+            emergency_phone={panicUser.emergency_phone}
+          />
+        ));
+
+      case "in progress":
+        let responseInProgress = tableData.filter(
+          (filterData) => filterData.response_status === "in progress"
+        );
+        return responseInProgress.map((panicUser) => (
+          <PanicTable
+            id={panicUser.id}
+            key={panicUser.id}
+            name={panicUser.name}
+            location={panicUser.location}
+            coordinate_lat={panicUser.coordinate_lat}
+            coordinate_long={panicUser.coordinate_long}
+            phone={panicUser.phone}
+            response_status={panicUser.response_status}
+            status={panicUser.status}
+            panic_date={panicUser.panic_date}
+            emergency_phone={panicUser.emergency_phone}
+          />
+        ));
+
+      case "helped":
+        let responseHelped = tableData.filter(
+          (filterData) => filterData.response_status === "helped"
+        );
+        return responseHelped.map((panicUser) => (
+          <PanicTable
+            id={panicUser.id}
+            key={panicUser.id}
+            name={panicUser.name}
+            location={panicUser.location}
+            coordinate_lat={panicUser.coordinate_lat}
+            coordinate_long={panicUser.coordinate_long}
+            phone={panicUser.phone}
+            response_status={panicUser.response_status}
+            status={panicUser.status}
+            panic_date={panicUser.panic_date}
+            emergency_phone={panicUser.emergency_phone}
+          />
+        ));
+
+      default:
+        return tableData.map((panicUser) => (
+          <PanicTable
+            id={panicUser.id}
+            key={panicUser.id}
+            name={panicUser.name}
+            location={panicUser.location}
+            coordinate_lat={panicUser.coordinate_lat}
+            coordinate_long={panicUser.coordinate_long}
+            phone={panicUser.phone}
+            response_status={panicUser.response_status}
+            status={panicUser.status}
+            panic_date={panicUser.panic_date}
+            emergency_phone={panicUser.emergency_phone}
+          />
+        ));
+    }
+  };
+
   return (
     <>
-      <div className="flex flex-wrap mx-5 my-5 bg-white xl:mx-6">
-        {users.map((item, index) => {
-          return (
-            <div key={index} className="p-3">
-              <CurrentStatus name={item.name} count={item.count} />
-            </div>
-          );
-        })}
-      </div>
-      <div className="mx-5 border rounded-md">
-        <div className="flex justify-between mx-5 py-5">
-          <PageHeading title="panic users" />
-          <div className="flex text-gray-700">
-            <div
-              className="flex mx-2 items-center cursor-pointer"
-              onClick={() => setSort(!sort)}
-            >
-              {sort ? SortAscIcon : SortDescIcon}
-              <div className="ml-1 text-xs md:text-sm lg:text-md">Sort</div>
-            </div>
-            <div className="flex mx-2 items-center cursor-pointer">
-              {FilterIcon}{" "}
-              <div className="ml-1 text-xs md:text-sm lg:text-md">Filter</div>
-            </div>
-          </div>
-        </div>
-        {panicData.length > 0 ? (
+      <MenuComponent setChoose={setChoose} menuItem={users} />
+
+      <TableComponent
+        thead={[
+          "Name",
+          "Contact Location",
+          "Parent/Guardian Phone",
+          "Panic Time",
+          "Response Status",
+          "Status",
+        ]}
+      >
+        {handleChoose(choose)}
+      </TableComponent>
+    </>
+  );
+}
+
+export default Panic;
+
+const tableData = [
+  {
+    id: 1,
+    name: "Roshan Silwal",
+    location: "chabahil",
+    coordinate_lat: 27.718762628199112,
+    coordinate_long: 85.34984609090209,
+    phone: "9845454545",
+    emergency_phone: "6546546541",
+    response_status: "pending",
+    status: "unhealthy",
+    panic_date: "22 June 2021, 8:34 AM",
+  },
+  {
+    id: 2,
+    name: "Bigyan Yadav",
+    location: "imadol",
+    coordinate_lat: 27.649173641706266,
+    coordinate_long: 85.34762060688774,
+    phone: "6549871230",
+    emergency_phone: "6546546541",
+    response_status: "in progress",
+    status: "unhealthy",
+    panic_date: "2 June 2021, 11:34 AM",
+  },
+  {
+    id: 3,
+    name: "Anu Sharma",
+    location: "bhaktapur",
+    coordinate_lat: 27.670849303715322,
+    coordinate_long: 85.4390348735776,
+    phone: "1230456789",
+    emergency_phone: "6546546541",
+    response_status: "helped",
+    status: "detected",
+    panic_date: "12 August 2021, 3:00 PM",
+  },
+  {
+    id: 4,
+    name: "Pemba Gurung",
+    location: "kalanki",
+    coordinate_lat: 27.693347880167195,
+    coordinate_long: 85.2786081949241,
+    phone: "7412589632",
+    emergency_phone: "6546546541",
+    status: "healthy",
+    response_status: "helped",
+    panic_date: "12 August 2021, 3:00 PM",
+  },
+  {
+    id: 5,
+    name: "Bisheh Bal",
+    location: "sunakothi",
+    coordinate_lat: 27.630474574494766,
+    coordinate_long: 85.3181666993053,
+    phone: "9876541230",
+    emergency_phone: "6546546541",
+    status: "unhealthy",
+    response_status: "helped",
+    panic_date: "12 August 2021, 3:00 PM",
+  },
+  {
+    id: 6,
+    name: "Binay Joshi",
+    location: "bhaktapur",
+    coordinate_lat: 27.6714060247126,
+    coordinate_long: 85.43792659565294,
+    phone: "1456789001",
+    emergency_phone: "6546546541",
+    response_status: "in progress",
+    status: "unhealthy",
+    panic_date: "15 August 2021, 10:30 AM",
+  },
+];
+
+/* 
+ {panicData.length > 0 ? (
           <>
             <TableComponent
               thead={[
@@ -86,17 +231,12 @@ function Panic() {
                 "Status",
               ]}
             >
-              {/* <PanicTable tableData={tableData} /> */}
+            <PanicTable tableData={tableData} />
             </TableComponent>
           </>
         ) : (
           <div className="text-center py-24">
             <p>There arent any panic data</p>
           </div>
-        )}
-      </div>
-    </>
-  );
-}
-
-export default Panic;
+        )} 
+*/

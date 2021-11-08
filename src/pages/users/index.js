@@ -1,24 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
-import CurrentStatus from "../../components/stats/CurrentStatus.js";
 import { allUsersData } from "../../api";
 import { AppContext } from "../../context/app.context.js";
 import TableComponent from "../../components/tables/index.js";
 import PageHeading from "../../components/header/pageHeading.js";
 import UserTable from "./userTable.js";
-
-/* import PropTypes from "prop-types";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
- */
-
-import Table from "@mui/material/Table";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableCell from "@mui/material/TableCell";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
+import MenuComponent from "../../components/menu/MenuComponent.js";
 
 function Users() {
   const { token } = useContext(AppContext);
@@ -107,15 +93,8 @@ function Users() {
 
   return (
     <main className="mb-14">
-      <div className="flex flex-wrap mx-5 my-5 bg-white space-x-5 xl:mx-6">
-        {users.map((item, index) => {
-          return (
-            <div className="p-3" onClick={() => setChoose(item.name)}>
-              <CurrentStatus key={index} name={item.name} count={item.count} />
-            </div>
-          );
-        })}
-      </div>
+      <MenuComponent setChoose={setChoose} menuItem={users} />
+
       <section className="mx-5 rounded-md">
         <div className="flex justify-between mx-5 py-5">
           <PageHeading title="Users" />
@@ -146,46 +125,3 @@ function Users() {
 }
 
 export default Users;
-
-/*  <TableBody>
-          {userdata.map((row) => (
-            <StyledTableRow key={row.name}>
-              <StyledTableCell component="th" scope="row">
-                {row.name}
-              </StyledTableCell>
-              <StyledTableCell align="right">{row.email}</StyledTableCell>
-              <StyledTableCell align="right">{row.phone}</StyledTableCell>
-              <StyledTableCell align="right">{row.country}</StyledTableCell>
-              <StyledTableCell align="right">{row.name}</StyledTableCell>
-            </StyledTableRow>
-          ))}
-        </TableBody> */
-
-//Old one
-
-//New One
-/* <main className="mb-14">
-      <div className="flex flex-wrap mx-5 my-5 bg-white space-x-5 xl:mx-6">
-        {users.map((item, index) => {
-          return (
-            <div className="p-3" onClick={() => setChoose(item.name)}>
-              <CurrentStatus key={index} name={item.name} count={item.count} />
-            </div>
-          );
-        })}
-      </div>
-      <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 700 }} aria-label="customized table">
-          <TableHead>
-            <TableRow>
-              <TableCell>Name</TableCell>
-              <TableCell>Contact Location</TableCell>
-              <TableCell align="center">Vaccination Status</TableCell>
-              <TableCell align="center">Detected Date</TableCell>
-              <TableCell align="center">Status</TableCell>
-            </TableRow>
-          </TableHead>
-          {handleChoose(choose)}
-        </Table>
-      </TableContainer>
-    </main> */

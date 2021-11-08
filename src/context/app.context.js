@@ -9,6 +9,8 @@ const AppContextComponent = (props) => {
   const [token, setToken] = useState("");
   const [mode, setMode] = useState(false);
   let history = useHistory();
+  const [goalValue, setGoalValue] = useState(50000);
+  const [collected, setCollected] = useState(18700);
 
   const toogleMode = () => setMode(!mode);
 
@@ -35,6 +37,10 @@ const AppContextComponent = (props) => {
     token,
     setToken,
     logout,
+    goalValue,
+    setGoalValue,
+    collected,
+    setCollected,
   };
 
   return (

@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import CurrentStatus from "../../components/stats/CurrentStatus";
 import { allPhotoVideos, baseUrl } from "../../api";
 
 import { AppContext } from "../../context/app.context";
@@ -21,6 +20,7 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
+import MenuComponent from "../../components/menu/MenuComponent";
 
 function PhotoVideoMain() {
   const { token } = useContext(AppContext);
@@ -161,19 +161,7 @@ function PhotoVideoMain() {
 
   return (
     <>
-      <div className="flex flex-wrap mx-5 my-5 bg-white xl:mx-6">
-        {users.map((item, index) => {
-          return (
-            <div
-              key={index}
-              className="p-3"
-              onClick={() => setChoose(item.name)}
-            >
-              <CurrentStatus name={item.name} count={item.count} />
-            </div>
-          );
-        })}
-      </div>
+      <MenuComponent setChoose={setChoose} menuItem={users} />
       <div className="mx-5 border rounded-md">
         <div className="flex justify-between mx-5 py-5">
           <PageHeading title="Photo and Videos" />

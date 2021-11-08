@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
-import { AddIcon, FilterIcon } from "../../assets/icons/icons";
+import { AddIcon } from "../../assets/icons/icons";
 import PageHeading from "../../components/header/pageHeading";
-import CurrentStatus from "../../components/stats/CurrentStatus";
 import CustomModal from "../../components/modals/modal";
 import { useModal } from "@razzib/react-kit";
 import AddHelpLineForm from "./helplineForm";
@@ -9,6 +8,7 @@ import { allHelplines } from "../../api";
 import { AppContext } from "../../context/app.context";
 import TableComponent from "../../components/tables";
 import HelplineTable from "./helplineTable";
+import MenuComponent from "../../components/menu/MenuComponent";
 
 function HelpLineMain() {
   const { token } = useContext(AppContext);
@@ -36,15 +36,11 @@ function HelpLineMain() {
 
   const users = [{ name: "total", count: helplines.length }];
 
+  const [choose, setChoose] = useState("");
+
   return (
     <>
-      <div className="flex flex-wrap mx-5 my-5 bg-white justify-between xl:mx-6">
-        {users.map((item, index) => {
-          return (
-            <CurrentStatus key={index} name={item.name} count={item.count} />
-          );
-        })}
-      </div>
+      <MenuComponent setChoose={setChoose} menuItem={users} />
       <div className="mx-5 border rounded-md">
         <HelplineHeading
           show={show}

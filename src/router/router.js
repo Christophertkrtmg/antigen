@@ -11,6 +11,7 @@ import { AppContext } from "../context/app.context.js";
 import HelpLineMain from "../pages/helpline/index.js";
 import DashUsers from "../pages/dashUser/index.js";
 import PhotoVideoMain from "../pages/photoVideo/index.js";
+import Donation from "../pages/donation/index";
 
 function Routes() {
   const { session, checkSession } = useContext(AppContext);
@@ -38,6 +39,7 @@ function DashboardRoutes() {
         <Route exact path="/dashboard/users" component={Users} />
         <Route exact path="/dashboard/panic" component={Panic} />
         <Route exact path="/dashboard/bloodData" component={BloodData} />
+        <Route exact path="/dashboard/donation" component={Donation} />
         <Route path="/dashboard/dashUser" component={DashUsers} />
         <Route exact path="/dashboard/qns" component={Qns} />
         <Route path="/dashboard/questions" component={Users} />

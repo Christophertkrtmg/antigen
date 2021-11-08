@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import { allBloodData } from "../../api";
-import CurrentStatus from "../../components/stats/CurrentStatus";
 import { AppContext } from "../../context/app.context";
 import BloodSection from "./BloodSection";
+import MenuComponent from "../../components/menu/MenuComponent";
 
 function BloodData() {
   const [choose, setChoose] = useState("");
@@ -126,15 +126,7 @@ function BloodData() {
 
   return (
     <main className="mb-14">
-      <div className="flex flex-wrap mx-5 my-5 bg-white xl:mx-6">
-        {bloodData.map((item, index) => {
-          return (
-            <div onClick={() => setChoose(item.name)} className="p-3">
-              <CurrentStatus key={index} name={item.name} count={item.count} />
-            </div>
-          );
-        })}
-      </div>
+      <MenuComponent setChoose={setChoose} menuItem={bloodData} />
       {handleSwitchBlood(choose)}
     </main>
   );

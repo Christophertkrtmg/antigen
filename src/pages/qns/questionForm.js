@@ -13,7 +13,7 @@ function AddQuestionForm({ hide, fetchQuestions }) {
 
   const [mainImage, setMainImage] = useState();
   const [awarenessImg, setAwarenessImage] = useState();
-  const [sueveryImg, setSurveyImage] = useState();
+  const [surveyImg, setSurveyImage] = useState();
   const [isSurvey, setIsSurvey] = useState(false);
   const [loading, setLoading] = useState(false);
 
