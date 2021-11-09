@@ -30,10 +30,6 @@ function HelpLineMain() {
     myFunction();
   }, []);
 
-  /* useEffect(async () => {
-    await getHelpLineData();
-  }, []); */
-
   const users = [{ name: "total", count: helplines.length }];
 
   const [choose, setChoose] = useState("");

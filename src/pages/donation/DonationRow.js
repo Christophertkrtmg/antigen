@@ -19,28 +19,34 @@ function DonationRow({
   const [finalDialog, setFinalDialog] = useState(false);
   const [textButton, setTextButton] = useState(false);
 
+  //Open photo dialog box when user clicked on photo in photo proof column
   const handlePhotoClick = () => {
     setOpenPhoto(true);
   };
 
+  //close photo dialog box
   const closePhoto = () => {
     setOpenPhoto(false);
     setPhotoVerify(false);
   };
 
+  //To confirm photo is okay - and then to make final verify button visible in verify/unverfied column
   const confirmPhoto = () => {
     setOpenPhoto(false);
     setPhotoVerify(true);
   };
 
+  //To open dialog box to ask final verification question
   const handleFinalDialog = () => {
     setFinalDialog(true);
   };
 
+  //Close final verification question ask dialog box
   const closeFinalDialog = () => {
     setFinalDialog(false);
   };
 
+  //Confirm the full & final verify button
   const confirmFinalVerify = () => {
     setTextButton(true);
     setFinalDialog(false);
@@ -95,6 +101,7 @@ function DonationRow({
           </div>
         </div>
       </td>
+      {/* Dialog box open when user clicked the photo on photo proof column */}
       <Dialog
         open={openPhoto}
         onClose={closePhoto}
@@ -122,6 +129,7 @@ function DonationRow({
           </Button>
         </DialogActions>
       </Dialog>
+      {/*Dialog box open when user clicked final verify button - this button is visible only when user confirmed the photo proof */}
       <Dialog
         open={finalDialog}
         onClose={closeFinalDialog}

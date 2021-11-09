@@ -4,7 +4,7 @@ import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 
 function Donation() {
-  const [openDonation, setOpenDonation] = useState(false);
+  const [openDonation, setOpenDonation] = useState(false); //To open new donation card create material dialog box state
 
   const [newTitle, setNewTitle] = useState();
   const [newDescription, setNewDescription] = useState();
@@ -14,14 +14,17 @@ function Donation() {
   const [newLogo, setNewLogo] = useState("");
   const [addDonationAmount, setAddDonationAmount] = useState(0);
 
+  //Open dialog box where new donation form is opened to create a new donation card
   const handleAddDonation = () => {
     setOpenDonation(true);
   };
 
+  //Close new donation card form
   const closeDonation = () => {
     setOpenDonation(false);
   };
 
+  //Add new donation card
   const confirmAddDonation = () => {
     setOpenDonation(false);
     const data = {
@@ -100,11 +103,7 @@ function Donation() {
               onChange={(e) => setNewLogo(e.target.value)}
             />
           </div>
-          {/* <ImagePickerComponent
-            label="Logo"
-            color="bg-blue-800"
-            onImageChange={setMainPhotoVideo}
-          /> */}
+
           <div className={className.inputBox}>
             <label className={className.inputLabel}>Bank Name</label>
             <input
@@ -146,6 +145,7 @@ const className = {
     "w-full  content-center text-base py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500",
 };
 
+//Dummy data array
 const donationList = [
   {
     logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJ3LF8LvX6rVhvBAr_jnh7W7TCJVdAecf7Fw&usqp=CAU",

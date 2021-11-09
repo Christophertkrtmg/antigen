@@ -35,12 +35,9 @@ function Panic() {
     myFunction();
   }, []);
 
-  /* useEffect(async () => {
-    await fetchPanicData();
-  }, []); */
+  const [choose, setChoose] = useState(""); //State of choose option from menubar list
 
-  const [choose, setChoose] = useState("");
-
+  //Function after user choose an option from menu bar
   const handleChoose = (getchoose) => {
     switch (getchoose) {
       case "pending":
@@ -124,8 +121,8 @@ function Panic() {
 
   return (
     <>
+      {/*Menu Component is top menu bar component from where we choose different option and render the data */}
       <MenuComponent setChoose={setChoose} menuItem={users} />
-
       <TableComponent
         thead={[
           "Name",
@@ -144,6 +141,7 @@ function Panic() {
 
 export default Panic;
 
+//A dummy data - panic data may be in this form
 const tableData = [
   {
     id: 1,

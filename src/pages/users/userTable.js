@@ -1,9 +1,7 @@
+//simple user table to show the data of users
+
 import React from "react";
-import {
-  DotsVerticalIcon,
-  PendingStatusIcon,
-  TickIcon,
-} from "../../assets/icons/icons.js";
+import { PendingStatusIcon, TickIcon } from "../../assets/icons/icons.js";
 
 function UserTable({ tableData }) {
   return tableData.map((user, index) => {
@@ -55,32 +53,14 @@ function UserTable({ tableData }) {
           {user.recent_health[0].status.default === 0 ? (
             <div className="flex items-center  text-center jusify-center">
               <div className={className.statusNormal}>Healthy</div>
-              {/* <div
-                className="ml-5 text-gray-400 cursor-pointer"
-                onClick={() => alert("Normal")}
-              >
-                {DotsVerticalIcon}
-              </div> */}
             </div>
           ) : user.recent_health[0].status.default === 1 ? (
             <div className="flex items-center  text-center jusify-center">
               <div className={className.statusUnhealthy}>Unhealthy</div>
-              {/* <div
-                className="ml-5 text-gray-400 cursor-pointer"
-                onClick={() => alert("Normal")}
-              >
-                {DotsVerticalIcon}
-              </div> */}
             </div>
           ) : (
             <div className="flex items-center text-center jusify-center">
               <div className={className.statusDetected}>Detected</div>
-              {/* <div
-                className="ml-5 text-gray-400 cursor-pointer"
-                onClick={() => alert("Normal")}
-              >
-                {DotsVerticalIcon}
-              </div> */}
             </div>
           )}
         </td>
@@ -103,11 +83,11 @@ const className = {
     "flex bg-red-700 rounded-full  items-center justify-center  py-1",
   vaccinePending:
     "flex bg-gray-700 rounded-full  items-center justify-center  py-1",
-  vaccineStatus: "text-sm text-white text-sm ",
+  vaccineStatus: "text-sm text-white",
   statusNormal:
-    "bg-green-500 rounded-full px-2 py-1 w-24 text-white  text-sm capitalize  font-semibold text-sm",
+    "bg-green-500 rounded-full px-2 py-1 w-24 text-white  text-sm capitalize  font-semibold",
   statusUnhealthy:
-    "bg-yellow-500 rounded-full px-2 py-1 w-24 text-white  text-sm capitalize  font-semibold text-sm",
+    "bg-yellow-500 rounded-full px-2 py-1 w-24 text-white  text-sm capitalize  font-semibold",
   statusDetected:
-    "bg-red-500 rounded-full px-2 py-1 w-24 text-white  text-sm capitalize  font-semibold text-sm",
+    "bg-red-500 rounded-full px-2 py-1 w-24 text-white  text-sm capitalize  font-semibold",
 };

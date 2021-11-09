@@ -11,8 +11,6 @@ import HandleStatus from "./HandleStatus";
 function HelplineTable({ tableData, getHelpLineData }) {
   const { show, hide } = useModal(DeleteModal);
 
-  console.log(tableData);
-
   return tableData.map((helpline, index) => {
     return (
       <tr

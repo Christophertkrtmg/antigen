@@ -47,8 +47,6 @@ function BloodData() {
     }
   };
 
-  console.log(userBloodData);
-
   useEffect(() => {
     async function fetchFunction() {
       await fetchBloodData();

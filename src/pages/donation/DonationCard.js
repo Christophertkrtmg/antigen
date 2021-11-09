@@ -1,3 +1,5 @@
+//Donation card
+
 import React, { useState } from "react";
 import NumberFormat from "react-number-format";
 import DonutLargeIcon from "@mui/icons-material/DonutLarge";
@@ -7,12 +9,14 @@ import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 
 function DonationCard({ props, setAddDonationAmount }) {
-  const [openDonation, setOpenDonation] = useState(false);
+  const [openDonation, setOpenDonation] = useState(false); //To open fullscreen donation box state
 
+  //Open donation box full screen dialog box
   const handleOpenDonation = () => {
     setOpenDonation(true);
   };
 
+  //Close fullscreen donation dialog box
   const closeDonation = () => {
     setOpenDonation(false);
   };

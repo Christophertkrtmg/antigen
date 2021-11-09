@@ -15,6 +15,7 @@ import DoneAllIcon from "@mui/icons-material/DoneAll";
 import CancelIcon from "@mui/icons-material/Cancel";
 import DonationCompleted from "./DonationCompleted";
 
+//Material-UI progress bar customization------------------
 const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
   height: 25,
   borderRadius: 50,
@@ -28,20 +29,14 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
     backgroundColor: theme.palette.mode === "light" ? "#2839bd" : "#000",
   },
 }));
+//--------------------------------------------------------------------------
 
-function DonationBox({
-  props,
-  closeDonation,
-
-  setAddDonationAmount,
-}) {
+function DonationBox({ props, closeDonation, setAddDonationAmount }) {
   /* const { collected, goalValue, setCollected, setGoalValue } =
     useContext(AppContext); */
   const [upDownVerify, setUpDownVerify] = useState(false);
 
-  const progressBar = parseInt((props.collected / props.targetGoal) * 100);
-
-  console.log(props);
+  const progressBar = parseInt((props.collected / props.targetGoal) * 100); //Progress bar line value
 
   const handleChoose = (upDownVerify) => {
     switch (upDownVerify) {

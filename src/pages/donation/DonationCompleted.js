@@ -1,8 +1,18 @@
+/*
+  This section only occurs when donation is completed.
+  i.e: Donation target === Donation collected.
+  The table is gone and this section appears from where
+  we can submit the reports such that people can see 
+  where the donation amount is used...It can either photo, video or both.
+  
+*/
+
 import React, { useState } from "react";
 
 function DonationCompleted() {
-  const [files, setFiles] = useState([]);
+  const [files, setFiles] = useState([]); //An empty array state where reports will be added...
 
+  //Function to upload multiple data(photo) and store in an array
   const handleChange = (event) => {
     setFiles((files) => [...event.target.files, ...files]);
   };

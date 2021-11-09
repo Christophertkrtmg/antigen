@@ -12,6 +12,7 @@ function Users() {
   const [userCounts, SetUserCounts] = useState({});
   const [totalVaccinated, setTotalVaccinated] = useState("");
 
+  //fetch user data from backend
   const fetchUsersData = async () => {
     const data = await allUsersData({ token: token });
     console.log(data);
@@ -46,8 +47,9 @@ function Users() {
     { name: "total vaccinated", count: totalVaccinated },
   ];
 
-  const [choose, setChoose] = useState("users");
+  const [choose, setChoose] = useState("users"); //choose user on clicking menu (healthy, unhealthy, ...)
 
+  //filter user - search box to search user by name input
   const handleAllFilter = (event) => {
     const searchWord = event.target.value;
     const newFilter = userdata.filter((user) => {
@@ -61,11 +63,13 @@ function Users() {
     }
   };
 
+  //backspace key detect to reset the filter
   const handleBackDelete = (event) => {
     var key = event.keyCode || event.charCode;
     if (key === 8 || key === 46) return fetchUsersData();
   };
 
+  //function to choose user: for eg:- on clicking healthy menu, only the user with healthy status is render.
   const handleChoose = (getchoose) => {
     switch (getchoose) {
       case "healthy":
